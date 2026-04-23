@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 :root {
     --azul-principal: #0B61F4;
@@ -10,13 +13,17 @@
     --gris-suave: #f4f7ff;
 }
 
-
+html {
+    overflow-x: hidden;
+}
 
 body {
     margin: 0;
     font-family: 'DM Sans', sans-serif;
     color: #1a1a2e;
     background-color: var(--gris-suave);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* ===========================
@@ -26,6 +33,7 @@ body {
     width: 100%;
     margin-top: 80px;
     background-color: var(--gris-suave);
+    overflow-x: hidden;
 }
 
 .content-head {
@@ -37,6 +45,8 @@ body {
     align-items: center;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     border-radius: 0 0 24px 24px;
     box-shadow: 0 4px 24px rgba(11, 97, 244, 0.25);
@@ -47,6 +57,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .logoMenu img {
@@ -71,6 +82,7 @@ body {
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 50px;
     padding: 0 8px;
+    overflow: hidden;
 }
 
 .option-menu {
@@ -116,6 +128,7 @@ body {
 .content-rowOne-text {
     width: 40%;
     text-align: left;
+    min-width: 0;
 }
 
 .content-rowOne-text h1 {
@@ -169,6 +182,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 0;
 }
 
 .content-rowOne-img img {
@@ -176,7 +190,7 @@ body {
     max-width: 380px;
     border-radius: 24px;
     object-fit: cover;
-    margin-bottom: 0;
+    display: block;
 }
 
 /* ===========================
@@ -192,28 +206,19 @@ body {
     width: 100%;
 }
 
-.content-rowTwo-one {
+.content-rowTwo-one,
+.content-rowTwo-two,
+.content-rowTwo-three {
     width: 28%;
+    min-width: 0;
     position: relative;
     overflow: visible;
     padding-top: 240px;
-    margin-top: 0;
-}
-
-.content-rowTwo-two {
-    width: 28%;
-    position: relative;
-    overflow: visible;
-    padding-top: 240px;
-    margin-top: 0;
+    flex-shrink: 1;
 }
 
 .content-rowTwo-three {
-    width: 28%;
-    position: relative;
-    overflow: visible;
     padding-top: 220px;
-    margin-top: 0;
 }
 
 /* La imagen flota en absolute sobre la tarjeta */
@@ -232,8 +237,7 @@ body {
     width: 100%;
     height: 100%;
     max-height: 260px;
-    object-fit: contain;       /* PNG completo sin recorte */
-    /* object-position: bottom;   el perro queda parado sobre la tarjeta */
+    object-fit: contain;
     display: block;
     transition: transform 0.4s ease;
     filter: drop-shadow(0 8px 20px rgba(11, 97, 244, 0.2));
@@ -307,6 +311,8 @@ body {
     align-items: center;
     gap: 8px;
     margin-bottom: 14px;
+    flex-wrap: wrap;
+    padding: 0 16px;
 }
 
 .icon-redes a {
